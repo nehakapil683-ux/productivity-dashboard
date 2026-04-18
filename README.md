@@ -18,7 +18,7 @@ A simple and interactive web application designed to help students manage daily 
 
 
 ## 🌐 Live Demo
-
-
+## 🌐 Live Demo
+[Click here to view project](https://nehakapil683-ux.github.io/productivity-dashboard/)
 ## 💡 Author
 - Neha kapil (B.Tech CSE Student)
