@@ -1,7 +1,11 @@
 let tasks = JSON.parse(localStorage.getItem("tasks")) || [];
 let studyData = JSON.parse(localStorage.getItem("studyData")) || [];
 
-// TASKS
+let seconds = 0;
+let timer = null;
+let chart;
+
+// LOAD TASKS
 function loadTasks() {
   let list = document.getElementById("taskList");
   list.innerHTML = "";
@@ -38,23 +42,14 @@ function saveTasks() {
 
 function addTask() {
   let input = document.getElementById("taskInput");
-  let text = input.value;
-  if (text === "") return;
+  if (input.value === "") return;
 
-  tasks.push({ text, done: false });
+  tasks.push({ text: input.value, done: false });
   input.value = "";
   saveTasks();
 }
 
-// MODE
-function toggleMode() {
-  document.body.classList.toggle("light-mode");
-}
-
-// TIMER (FIXED)
-let seconds = 0;
-let timer = null;
-
+// TIMER
 function updateTime() {
   let hrs = Math.floor(seconds / 3600);
   let mins = Math.floor((seconds % 3600) / 60);
@@ -67,7 +62,7 @@ function updateTime() {
 }
 
 function startTimer() {
-  if (timer) return; // prevent multiple timers
+  if (timer) return;
 
   timer = setInterval(() => {
     seconds++;
@@ -79,13 +74,20 @@ function stopTimer() {
   clearInterval(timer);
   timer = null;
 
-  let minutes = Math.floor(seconds / 60);
-  if (minutes > 0) {
-    let today = new Date().toLocaleDateString();
+  let minutes = Math.max(1, Math.floor(seconds / 10)); // fast testing
+
+  let today = new Date().toLocaleDateString();
+
+  let existing = studyData.find(d => d.date === today);
+
+  if (existing) {
+    existing.time += minutes;
+  } else {
     studyData.push({ date: today, time: minutes });
-    localStorage.setItem("studyData", JSON.stringify(studyData));
-    loadChart();
   }
+
+  localStorage.setItem("studyData", JSON.stringify(studyData));
+  loadChart();
 }
 
 function resetTimer() {
@@ -95,9 +97,12 @@ function resetTimer() {
   updateTime();
 }
 
-// CHART
-let chart;
+// DARK MODE
+function toggleMode() {
+  document.body.classList.toggle("light-mode");
+}
 
+// GRAPH
 function loadChart() {
   let ctx = document.getElementById("myChart").getContext("2d");
 
