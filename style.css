@@ -3,11 +3,10 @@ body {
   background: #121212;
   color: white;
   text-align: center;
-  transition: 0.3s;
 }
 
 .light-mode {
-  background: #ffffff;
+  background: white;
   color: black;
 }
 
@@ -20,9 +19,9 @@ body {
 .task-section, .timer-section {
   background: #1e1e1e;
   padding: 20px;
+  margin: 10px;
   border-radius: 10px;
   width: 40%;
-  margin: 10px;
 }
 
 .light-mode .task-section,
@@ -30,13 +29,8 @@ body {
   background: #f2f2f2;
 }
 
-input {
-  padding: 10px;
-  width: 70%;
-}
-
 button {
-  padding: 10px;
+  padding: 8px;
   margin: 5px;
   cursor: pointer;
 }
@@ -49,5 +43,5 @@ li {
 
 .chart-container {
   width: 80%;
-  margin: 40px auto;
+  margin: 30px auto;
 }
