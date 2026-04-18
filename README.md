@@ -15,6 +15,21 @@ A simple and interactive web application designed to help students manage daily 
 - Chart.js
 
 ## 📸 Screenshots
+### 1️⃣ Home Page (Website Open View)
+![Home](screenshot1.png)
+
+### 2️⃣ Task Add View (Single Task)
+![Single Task](screenshot2.png)
+
+### 3️⃣ Task List View (Multiple Tasks)
+![All Tasks](screenshot3.png)
+
+### 4️⃣ Timer + Graph View (Study Tracking)
+![Timer Graph](screenshot4.png)
+
+### 5️⃣ Dark / Light Mode Toggle
+![Mode Toggle](screenshot5.png)
+
 
 
 ## 🌐 Live Demo
