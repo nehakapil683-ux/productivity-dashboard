@@ -1,12 +1,12 @@
 # 📊 Student Productivity Dashboard
 
-A simple web app to manage tasks and track study time.
+A simple and interactive web application designed to help students manage daily tasks and track study time effectively.
 
 ## 🚀 Features
-- Task Manager (Add/Delete/Complete)
-- Study Timer
-- Study Progress Graph
-- Dark/Light Mode
+- ✅ Task Manager (Add / Delete / Complete)
+- ⏱ Study Timer
+- 📊 Study Progress Graph
+- 🌙 Dark / Light Mode
 
 ## 🛠 Tech Stack
 - HTML
@@ -14,11 +14,11 @@ A simple web app to manage tasks and track study time.
 - JavaScript
 - Chart.js
 
-## 📸 Demo
-(Add screenshots here)
+## 📸 Screenshots
 
-## 🔗 Live Demo
-(Will add soon)
 
----
-Built by a B.Tech CSE student 💻
+## 🌐 Live Demo
+
+
+## 💡 Author
+- Neha kapil (B.Tech CSE Student)
