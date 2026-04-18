@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Productivity Dashboard</title>
+  <link rel="stylesheet" href="style.css">
+
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+
+<h1>📊 Productivity Dashboard</h1>
+
+<button onclick="toggleMode()">🌙 Toggle Mode</button>
+
+<div class="container">
+
+  <div class="task-section">
+    <h2>📝 Tasks</h2>
+    <input type="text" id="taskInput" placeholder="Enter task...">
+    <button onclick="addTask()">Add</button>
+    <ul id="taskList"></ul>
+  </div>
+
+  <div class="timer-section">
+    <h2>⏱ Study Timer</h2>
+    <h3 id="time">00:00:00</h3>
+    <button onclick="startTimer()">Start</button>
+    <button onclick="stopTimer()">Stop</button>
+    <button onclick="resetTimer()">Reset</button>
+  </div>
+
+</div>
+
+<div class="chart-container">
+  <h2>📊 Study Progress</h2>
+  <canvas id="myChart"></canvas>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
