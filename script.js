@@ -1,3 +1,5 @@
+let DEMO_MODE = false;
+
 let tasks = JSON.parse(localStorage.getItem("tasks")) || [];
 let studyData = JSON.parse(localStorage.getItem("studyData")) || [];
 
@@ -5,7 +7,7 @@ let seconds = 0;
 let timer = null;
 let chart;
 
-// LOAD TASKS
+// TASKS
 function loadTasks() {
   let list = document.getElementById("taskList");
   list.innerHTML = "";
@@ -76,15 +78,17 @@ function stopTimer() {
 
   let minutes = Math.max(1, Math.floor(seconds / 10)); // fast testing
 
-  let today = new Date().toLocaleDateString();
+  let today;
 
-  let existing = studyData.find(d => d.date === today);
-
-  if (existing) {
-    existing.time += minutes;
+  if (DEMO_MODE) {
+    // 🔥 LinkedIn demo (multiple bars)
+    today = new Date(Date.now() + Math.random()*1000000000).toLocaleDateString();
   } else {
-    studyData.push({ date: today, time: minutes });
+    // ✅ Real mode (same date merge)
+    today = new Date().toLocaleDateString();
   }
+
+  studyData.push({ date: today, time: minutes });
 
   localStorage.setItem("studyData", JSON.stringify(studyData));
   loadChart();
@@ -102,12 +106,22 @@ function toggleMode() {
   document.body.classList.toggle("light-mode");
 }
 
-// GRAPH
+// GRAPH (AUTO MERGE SAME DATE)
 function loadChart() {
   let ctx = document.getElementById("myChart").getContext("2d");
 
-  let labels = studyData.map(d => d.date);
-  let data = studyData.map(d => d.time);
+  let merged = {};
+
+  studyData.forEach(item => {
+    if (merged[item.date]) {
+      merged[item.date] += item.time;
+    } else {
+      merged[item.date] = item.time;
+    }
+  });
+
+  let labels = Object.keys(merged);
+  let data = Object.values(merged);
 
   if (chart) chart.destroy();
 
